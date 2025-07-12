@@ -58,7 +58,7 @@ Each user role has a different interface and access level.
 ## 🙋‍♀️ Author
 
 **Evisa Nela**  
-📧 evisanela@gmail.com  
+📧 enela23@epoka.edu.al
 🌍 [GitHub Profile](https://github.com/Nela-2005)  
 📍 Tirana, Albania
 
