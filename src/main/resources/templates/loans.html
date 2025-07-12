@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="sq" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f4faff;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #e0f0ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #003366;
+        }
+
+        .btn-primary {
+            background-color: #5dade2;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #3498db;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 40px;
+            padding: 10px;
+        }
+
+        table {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #d6eaf8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="my-4 text-center">
+        <h1>Book loans</h1>
+    </header>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/loans/addLoan" class="btn btn-primary">Add New Loan</a>
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book</th>
+            <th>Student</th>
+            <th>Loan Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="loan : ${loans}">
+            <td th:text="${loan.id}"></td>
+            <td th:text="${loan.book.title}"></td>
+            <td th:text="${loan.student.name}"></td>
+            <td th:text="${loan.loanDate}"></td>
+            <td th:text="${loan.returnDate}"></td>
+            <td th:text="${loan.status}"></td>
+            <td>
+                <a th:href="@{/loans/delete/{id}(id=${loan.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure you want to delete this Loan?');">Delete</a>
+                <a th:href="@{/loans/update/{id}(id=${loan.id})}" class="btn btn-warning btn-sm">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <footer class="my-4">
+        <p class="text-center">Sistemi i Menaxhimit të Bibliotekës - 2025</p>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
